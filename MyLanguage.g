@@ -212,8 +212,8 @@ HEX
     ;
 
 STRING
- //  : ([a-zA-Z~] |HEX) ([a-zA-Z0-9.-] | HEX)*
- 	: 'dia'
+   : ([a-zA-Z~] |HEX) ([a-zA-Z0-9.-] | HEX)*
+ //	: 'dia'
    ;
 
 DIGITS
