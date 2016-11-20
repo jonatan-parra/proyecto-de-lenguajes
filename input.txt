@@ -1,0 +1,6 @@
+NAMEMETHOD : prueba 
+POST:{
+	URL: "dia/notas/mis",
+	REQUESTTYPE : "NONE",
+	//lista de parametros, pueden ser infinitos para meter en la gramatica
+}
