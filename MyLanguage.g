@@ -1,19 +1,27 @@
 grammar MyLanguage;		
 
-commands : NAMEMETHOD DOS_PUNTOS ID verbo;
+commands : urlrest ID_METODO METODO DOS_PUNTOS LLA_IZQ returntype requesttype dir_url parametros* LLA_DER;;
+
+urlrest: URLREST COMILLAS .*? COMILLAS;
+
+METODO: G E T | P O S T | P U T | D E L E T E | H E A D | O P T I O N S | T R A C E | P A T C H;
+
+returntype: RETURNTYPE DOS_PUNTOS COMILLAS value COMILLAS;
+
+requesttype: REQUESTTYPE DOS_PUNTOS COMILLAS (QUERY | TEMPLATE | HEADER |  MATRIX | PLAIN) COMILLAS;
+
+dir_url: DIR_URL COMILLAS (SLASH ID)+ COMILLAS;
 
 
- 
-verbo: METHOD  DOS_PUNTOS LLA_IZQ parametros* LLA_DER;
-parametros:  URL DOS_PUNTOS COMILLAS fragmentaddress COMILLAS COMA// fragmentaddress es para la URL
- 			| REQUESTTYPE DOS_PUNTOS COMILLAS ID COMILLAS COMA
+parametros:  
  			;
 
 
-METHOD: G E T | P O S T | P U T | D E L E T E | H E A D | O P T I O N S | T R A C E | P A T C H;
+
 
 // Seccion de palabras reservadas
 URL: U R L;
+
 
 QUERY: Q U E R Y;
 TEMPLATE: T E M P L A T E;
@@ -21,8 +29,10 @@ HEADER: H E A D E R;
 MATRIX: M A T R I X;
 PLAIN: P L A I N;
 
-REQUESTTYPE: R E Q U E S T T Y P E;
-NAMEMETHOD: N A M E M E T H O D;
+RETURNTYPE : 'R' 'E' 'T' 'U' 'R' 'N' 'T' 'Y' 'P' 'E';
+URLREST: 'U' 'R' 'L' 'R' 'E' 'S' 'T';
+REQUESTTYPE: 'R' 'E' 'Q' 'U' 'E' 'S' 'T' 'T' 'Y' 'P' 'E';
+DIR_URL: 'D' 'I' 'R' '_' 'U' 'R' 'L';
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
@@ -60,6 +70,8 @@ X: 'x' | 'X';
 Y: 'y' | 'Y';
 Z: 'z' | 'Z';
 
+
+
 // Seccion tokens
 PAR_IZQ : '(' ;
 PAR_DER : ')' ;
@@ -73,6 +85,8 @@ DOS_PUNTOS: ':';
 COMILLAS: '"';
 COMA: ',';
 
+ 
+SLASH : '/';
 
 // Operadores
 MULOP	: ( '*'|'/' );
@@ -86,6 +100,7 @@ OR_OP : ('|' | O);
 
 
 ID    	 : [a-zA-Z][a-zA-Z0-9_]*; 
+ID_METODO : [A-Z][A-Z0-9_]*
 
 // *************************************************************
 // JSON
