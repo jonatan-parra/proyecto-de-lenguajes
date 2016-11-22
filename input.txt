@@ -1,4 +1,4 @@
-URLREST: " url "
+URLREST: "https://funciono.com/muyAspero/rest"
 PRUEBA POST:{
 	RETURNTYPE: STRING
 	REQUESTTYPE: "MATRIX"
@@ -19,4 +19,40 @@ HAHA POST:{
 	DIR_URL: "/dia/notas/mis"
 	STRING var5
 	STRING HoLa
+}
+{ }
+{
+  codigoSNIES: 0,
+  "peticionEvaluado": [
+    {
+     tipoDocumento: C,
+     "numeroDocumento": 71375099,
+     "nuiEvaluado": "AC200010000034"
+    },
+    {
+      "tipoDocumento": "C",
+      "numeroDocumento": "15518695",
+      "nuiEvaluado": "AC200421358183"
+    },
+    {
+      "tipoDocumento": "C",
+      "numeroDocumento": "10316846",
+      "nuiEvaluado": "AC200511122647"
+    },
+    {
+      "tipoDocumento": "R",
+      "numeroDocumento": "1087407874",
+      "nuiEvaluado": "AC200511122662"
+    },
+    {
+      "tipoDocumento": "T",
+      "numeroDocumento": 90052556960,
+      "nuiEvaluado": "AC200710640458"
+    },
+    {
+      "tipoDocumento": "T",
+      "numeroDocumento": "95111000620",
+      "nuiEvaluado": "AC201223866514"
+    }
+  ]
 }
