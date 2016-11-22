@@ -17,11 +17,23 @@ public interface MyLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCommands(MyLanguageParser.CommandsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#metodosRest}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMetodosRest(MyLanguageParser.MetodosRestContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MyLanguageParser#urlrest}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitUrlrest(MyLanguageParser.UrlrestContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#url_rest}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUrl_rest(MyLanguageParser.Url_restContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MyLanguageParser#metodo}.
 	 * @param ctx the parse tree

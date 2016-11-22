@@ -18,6 +18,16 @@ public interface MyLanguageListener extends ParseTreeListener {
 	 */
 	void exitCommands(MyLanguageParser.CommandsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MyLanguageParser#metodosRest}.
+	 * @param ctx the parse tree
+	 */
+	void enterMetodosRest(MyLanguageParser.MetodosRestContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyLanguageParser#metodosRest}.
+	 * @param ctx the parse tree
+	 */
+	void exitMetodosRest(MyLanguageParser.MetodosRestContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MyLanguageParser#urlrest}.
 	 * @param ctx the parse tree
 	 */
@@ -27,6 +37,16 @@ public interface MyLanguageListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUrlrest(MyLanguageParser.UrlrestContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MyLanguageParser#url_rest}.
+	 * @param ctx the parse tree
+	 */
+	void enterUrl_rest(MyLanguageParser.Url_restContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MyLanguageParser#url_rest}.
+	 * @param ctx the parse tree
+	 */
+	void exitUrl_rest(MyLanguageParser.Url_restContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MyLanguageParser#metodo}.
 	 * @param ctx the parse tree
