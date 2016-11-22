@@ -5,7 +5,18 @@ PRUEBA POST:{
 	DIR_URL: "/dia/notas/mis"
 	NUMBER var5
 	STRING HoLa
-	
-	
-
+}
+REFER POST:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "MATRIX"
+	DIR_URL: "/dia/notas/mis"
+	NUMBER var5
+	STRING HoLa
+}
+HAHA POST:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "MATRIX"
+	DIR_URL: "/dia/notas/mis"
+	STRING var5
+	STRING HoLa
 }
