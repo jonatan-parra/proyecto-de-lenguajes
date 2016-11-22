@@ -17,11 +17,35 @@ public interface MyLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCommands(MyLanguageParser.CommandsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#verbo}.
+	 * Visit a parse tree produced by {@link MyLanguageParser#urlrest}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVerbo(MyLanguageParser.VerboContext ctx);
+	T visitUrlrest(MyLanguageParser.UrlrestContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#metodo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMetodo(MyLanguageParser.MetodoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#returntype}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturntype(MyLanguageParser.ReturntypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#requesttype}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRequesttype(MyLanguageParser.RequesttypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MyLanguageParser#dir_url}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDir_url(MyLanguageParser.Dir_urlContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MyLanguageParser#parametros}.
 	 * @param ctx the parse tree
@@ -59,99 +83,15 @@ public interface MyLanguageVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitValue(MyLanguageParser.ValueContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#fragmentaddress}.
+	 * Visit a parse tree produced by {@link MyLanguageParser#valor_retorno}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFragmentaddress(MyLanguageParser.FragmentaddressContext ctx);
+	T visitValor_retorno(MyLanguageParser.Valor_retornoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#uri}.
+	 * Visit a parse tree produced by {@link MyLanguageParser#bool}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUri(MyLanguageParser.UriContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#url}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUrl(MyLanguageParser.UrlContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#authority}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAuthority(MyLanguageParser.AuthorityContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#host}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHost(MyLanguageParser.HostContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#cellname}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCellname(MyLanguageParser.CellnameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#hostname}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHostname(MyLanguageParser.HostnameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#hostnumber}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHostnumber(MyLanguageParser.HostnumberContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#port}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPort(MyLanguageParser.PortContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#path}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPath(MyLanguageParser.PathContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#search}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSearch(MyLanguageParser.SearchContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#searchparameter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSearchparameter(MyLanguageParser.SearchparameterContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#user}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUser(MyLanguageParser.UserContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#login}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLogin(MyLanguageParser.LoginContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#password}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPassword(MyLanguageParser.PasswordContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyLanguageParser#fragmentid}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFragmentid(MyLanguageParser.FragmentidContext ctx);
+	T visitBool(MyLanguageParser.BoolContext ctx);
 }

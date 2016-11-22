@@ -1,6 +1,11 @@
-NAMEMETHOD : prueba 
-POST:{
-	URL: "dia/notas/mis",
-	REQUESTTYPE : "NONE",
-	//lista de parametros, pueden ser infinitos para meter en la gramatica
+URLREST: " url "
+PRUEBA POST:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "MATRIX"
+	DIR_URL: "/dia/notas/mis"
+	NUMBER var5
+	STRING HoLa
+	
+	
+
 }

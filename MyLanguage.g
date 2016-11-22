@@ -1,38 +1,29 @@
 grammar MyLanguage;		
+commands : urlrest ID metodo DOS_PUNTOS LLA_IZQ returntype requesttype dir_url parametros* LLA_DER;
 
-commands : urlrest ID_METODO METODO DOS_PUNTOS LLA_IZQ returntype requesttype dir_url parametros* LLA_DER;;
+urlrest: URLREST DOS_PUNTOS COMILLAS 'url'  COMILLAS;
 
-urlrest: URLREST COMILLAS .*? COMILLAS;
+metodo: ('GET' | 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'OPTIONS' | 'TRACE' | 'PATCH');
 
-METODO: G E T | P O S T | P U T | D E L E T E | H E A D | O P T I O N S | T R A C E | P A T C H;
-
-returntype: RETURNTYPE DOS_PUNTOS COMILLAS value COMILLAS;
+returntype: RETURNTYPE DOS_PUNTOS valor_retorno;
 
 requesttype: REQUESTTYPE DOS_PUNTOS COMILLAS (QUERY | TEMPLATE | HEADER |  MATRIX | PLAIN) COMILLAS;
 
-dir_url: DIR_URL COMILLAS (SLASH ID)+ COMILLAS;
+dir_url: DIR_URL DOS_PUNTOS COMILLAS (SLASH ID)+ COMILLAS;
 
-
-parametros:  
- 			;
-
-
-
-
+parametros:  valor_retorno ID;
 // Seccion de palabras reservadas
 URL: U R L;
-
-
 QUERY: Q U E R Y;
 TEMPLATE: T E M P L A T E;
 HEADER: H E A D E R;
 MATRIX: M A T R I X;
 PLAIN: P L A I N;
 
-RETURNTYPE : 'R' 'E' 'T' 'U' 'R' 'N' 'T' 'Y' 'P' 'E';
-URLREST: 'U' 'R' 'L' 'R' 'E' 'S' 'T';
-REQUESTTYPE: 'R' 'E' 'Q' 'U' 'E' 'S' 'T' 'T' 'Y' 'P' 'E';
-DIR_URL: 'D' 'I' 'R' '_' 'U' 'R' 'L';
+RETURNTYPE : 'RETURNTYPE';
+URLREST: 'URLREST';
+REQUESTTYPE: 'REQUESTTYPE';
+DIR_URL: 'DIR_URL';
 
 COMMENT 		: '/*' .*? '*/' -> skip ;
 LINE_COMMENT 	: '//' ~[\r\n]* -> skip ;
@@ -100,14 +91,12 @@ OR_OP : ('|' | O);
 
 
 ID    	 : [a-zA-Z][a-zA-Z0-9_]*; 
-ID_METODO : [A-Z][A-Z0-9_]*
+ID_METODO : [A-Z0-9_]+;
 
 // *************************************************************
 // JSON
 // *************************************************************
-json
-   : value
-   ;
+json  : value;
 
 object
    : '{' pair (',' pair)* '}'
@@ -128,115 +117,18 @@ value
    | NUMBER
    | object
    | array
-   | 'true'
-   | 'false'
+   | bool
    | 'null'
    ;
+   
+valor_retorno: 'STRING' | 'NUMBER' | 'object' | 'array' | 'bool' | 'null';
 
-
-// STRING    : '"' (ESC | ~ ["\\])* '"'    ;
-fragment ESC
-   : '\\' (["\\/bfnrt] | UNICODE)
-   ;
-fragment UNICODE
-   : 'u' HEX HEX HEX HEX
-   ;
-// fragment HEX    : [0-9a-fA-F]    ;
-NUMBER
-   : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
-   ;
-fragment INT
-   : '0' | [1-9] [0-9]*
-   ;
-// no leading zeros
-fragment EXP
-   : [Ee] [+\-]? INT
-   ;
-// \- since - means "range" inside [...]
-// WS    : [ \t\n\r] + -> skip    ;
-// *************************************************************
-// URL
-// *************************************************************
-
-fragmentaddress
-   : uri ('#' fragmentid)? WS?
-   ;
-
-uri
-   : url
-   ;
-
-url
-   : authority '://' login? host (':' port)? ('/' path)? ('?' search)?
-   ;
-
-authority
-   : STRING
-   ;
-
-host
-   : hostname
-   | hostnumber
-   ;
-
-cellname
-   : hostname
-   ;
-
-hostname
-   : STRING ('.' STRING)*
-   ;
-
-hostnumber
-   : DIGITS '.' DIGITS '.' DIGITS '.' DIGITS
-   ;
-
-port
-   : DIGITS
-   ;
-
-path
-   : STRING ('/' STRING)*
-   ;
-
-search
-   : searchparameter ('&' searchparameter)*
-   ;
-
-searchparameter
-    : STRING ('=' (STRING |DIGITS | HEX))?;
-
-user
-   : STRING
-   ;
-
-login
-    : user ':' password '@'
-    ;
-
-password
-   : STRING
-   ;
-
-fragmentid
-   : STRING
-   ;
-
-HEX
-    : ('%' [a-fA-F0-9] [a-fA-F0-9])+
-    ;
+bool: 'true' | 'false';
 
 STRING
-   : ([a-zA-Z~] |HEX) ([a-zA-Z0-9.-] | HEX)*
- //	: 'dia'
+   : [a-zA-Z][a-zA-Z0-9_]*
    ;
 
-DIGITS
-   : [0-9] +
+NUMBER
+   : [0-9]+( | [.][0-9]+)
    ;
-
-
-// WS    : [\r\n] +    ;
-
-
-
