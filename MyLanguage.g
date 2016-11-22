@@ -3,7 +3,7 @@ commands : urlrest metodosRest+ json*;
 
 metodosRest : ID  metodo DOS_PUNTOS LLA_IZQ returntype requesttype dir_url parametros* LLA_DER;
  
-urlrest: 'URLREST' DOS_PUNTOS COMILLAS 'no_sirve' COMILLAS;
+urlrest: 'URLREST' DOS_PUNTOS COMILLAS url COMILLAS;
 
 url_rest:  COMILLAS url_rest COMILLAS ;
 
@@ -49,13 +49,11 @@ OR_OP : ('|');
 
 
 ID    	 : [a-zA-Z][a-zA-Z0-9_]*; 
-
-//miniscula
-
+ID_OBJECT: '-'[A-Z][a-zA-Z0-9_]*;
 
 // *************************************************************
 // JSON
-// *************************************************************
+// ************************************************************* 
 json  : value;
 
 object
@@ -64,32 +62,101 @@ object
    ;
 
 pair
-   : STRING ':' value
+   : COMILLAS ID COMILLAS ':' value1 
+   | ID ':' value1
    ;
+  
 
+   
+value1:  COMILLAS value COMILLAS
+	| value
+	;  
+	
 array
    : '[' value (',' value)* ']'
    | '[' ']'
    ;
 
 value
-   : STRING
+   : ID
    | NUMBER
    | object
    | array
    | bool
    | 'null'
+   | COMILLAS ID COMILLAS
    ;
    
 valor_retorno: 'STRING' | 'NUMBER' | ID | 'bool' | 'null';
 
-
 bool: 'true' | 'false';
-
-STRING
-   : [a-zA-Z][a-zA-Z0-9_]*
-   ;
 
 NUMBER
    : [0-9]+( | [.][0-9]+)
    ;
+   
+// *************************************************************
+// URL
+// *************************************************************  
+url
+   : authority '://' login? host (':' port)? ('/' path)? ('?' search)?
+   ;
+
+authority
+   : ID
+   ;
+
+host
+   : hostname
+   | hostnumber
+   ;
+
+cellname
+   : hostname
+   ;
+
+hostname
+   : ID ('.' ID)*
+   ;
+
+hostnumber
+   : DIGITS '.' DIGITS '.' DIGITS '.' DIGITS
+   ;
+
+port
+   : DIGITS
+   ;
+
+path
+   : ID ('/' ID)*
+   ;
+
+search
+   : searchparameter ('&' searchparameter)*
+   ;
+
+searchparameter
+    : ID ('=' (ID |DIGITS ))?;
+
+user
+   : ID
+   ;
+
+login
+    : user ':' password '@'
+    ;
+
+password
+   : ID
+   ;
+
+fragmentid
+   : ID
+   ;
+
+
+DIGITS
+   : [0-9] +
+   ;
+
+   
