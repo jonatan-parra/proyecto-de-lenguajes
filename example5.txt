@@ -1,0 +1,9 @@
+URLREST: "http://facebook.com"
+
+getBooks GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "MATRIX"
+	DIR_URL: "/books"
+	STRING author
+	STRING country
+}

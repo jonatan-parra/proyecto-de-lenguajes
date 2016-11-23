@@ -1,0 +1,7 @@
+URLREST: "http://facebook.com"
+GetExample GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/example/get"
+	STRING param
+}

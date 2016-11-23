@@ -1,0 +1,7 @@
+URLREST: "http://facebook.com"
+getMsg GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "PATH"
+	DIR_URL: "/hello"
+	STRING param
+}

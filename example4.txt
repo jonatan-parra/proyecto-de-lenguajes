@@ -1,0 +1,33 @@
+URLREST: "http://facebook.com"
+
+multiplicacion POST:{
+	RETURNTYPE: NUMBER
+	REQUESTTYPE: "PATH"
+	DIR_URL: "/calculadora/multiplicacion"
+	NUMBER param
+	NUMBER param2
+}
+
+suma PUT:{
+	RETURNTYPE: NUMBER
+	REQUESTTYPE: "PATH"
+	DIR_URL: "/calculadora/suma"
+	NUMBER param
+	NUMBER param2
+}
+
+resta POST:{
+	RETURNTYPE: NUMBER
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/calculadora/resta"
+	NUMBER param
+	NUMBER param2
+}
+
+division POST:{
+	RETURNTYPE: NUMBER
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/calculadora/division"
+	NUMBER param
+	NUMBER param2
+}

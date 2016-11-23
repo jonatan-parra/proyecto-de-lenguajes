@@ -1,0 +1,15 @@
+URLREST: "http://facebook.com"
+
+consultarNotas GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/notas/mis"
+}
+
+
+consultarNotasFinal POST:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/notas/final"
+	STRING numCedula
+}

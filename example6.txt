@@ -1,0 +1,29 @@
+URLREST: "http://facebook.com"
+
+getColegio GET:{
+	RETURNTYPE: DefaultClazz
+	REQUESTTYPE: "MATRIX"
+	DIR_URL: "/consultar/colegio"
+}
+{
+   "direccion":    {
+      "calle": 25,
+      "referencia_casa": "carrera12",
+      "carrera": 10
+   },
+   "estudiante":    {
+      "identificacion": "1121011",
+      "nombre": "Monica",
+      "direccion":       {
+         "calle": 10,
+         "referencia_casa": "carrera10calle15",
+         "carrera": 7
+      },
+      "examen":       {
+         "nota": 4,
+         "materia": "Literatura"
+      }
+   },
+   "tipo": "Publico",
+   "puntaje": 100
+}
