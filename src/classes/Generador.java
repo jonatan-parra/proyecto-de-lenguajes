@@ -10,6 +10,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 
 
 public class Generador {
@@ -40,7 +42,7 @@ public class Generador {
 	 */
 	public static String restMethod(String requestType, String id, String url, String methodType, String returnType, List<String> tipoParametros, List<String> nombreParametros) {
 		List<String> formatoTipoParametros = formatoTipoParemetros(tipoParametros);
-		String metodo = "public static "  + returnType(returnType) + " " + id + "(" + parametrosForm(formatoTipoParametros, nombreParametros) + "){\n"
+		String metodo = "public static "  + returnValue(returnType) + " " + id + "(" + parametrosForm(formatoTipoParametros, nombreParametros) + "){\n"
 				+ "String myUrl = URL;\n"		
 				+ "myUrl = myUrl.concat(\"" + url + "\");\n\n"
 				+ "//Se anaden los parametros a la URL\n"
@@ -49,7 +51,9 @@ public class Generador {
 				+ "Client client = Client.create();\n"
 				+ "WebResource webResource = client.resource(myUrl);\n"
 				+ restMethod(methodType)
-				+ "}";
+				+ returnMethod(returnType) + "\n"
+				+ "}\n"
+				;
 
 		return metodo;
 	}
@@ -65,12 +69,6 @@ public class Generador {
 			case "NUMBER":
 				formatoTipoParametros.add("Double");
 				break;
-			case "object":
-				formatoTipoParametros.add("object");
-				break;
-			case "array":
-				formatoTipoParametros.add("array");
-				break;
 			case "bool":
 				formatoTipoParametros.add("boolean");
 				break;
@@ -78,12 +76,27 @@ public class Generador {
 				formatoTipoParametros.add("boolean");
 				break;
 			default:
-				break;
+				formatoTipoParametros.add(string);
 			}
 		}
 		return formatoTipoParametros;
 
 		
+	}
+	
+	public static String returnValue(String string){
+		switch (string) {
+		case "STRING":
+			return "String";
+		case "NUMBER":
+			return "Double";
+		case "bool":
+			return "boolean";
+		case "null":
+			return "boolean";
+		default:
+			return string;
+		}
 	}
 	
 	public static String returnType(String returnType){
@@ -116,10 +129,39 @@ public class Generador {
 				+ "(ClientResponse.class"
 				+ ");\n"
 				+ "// Contiene el JSON\n"
-				+ "String respuestaJson = response.getEntity(String.class);\n"
-				+ "return respuestaJson;\n\n";
+				+ "String respuestaJson = response.getEntity(String.class);\n";
 			
 		return metodo;
+	}
+	
+	public static String returnMethod(String returnType) {
+		String returnValue = returnValue(returnType);
+		if(returnValue.equals("String")){
+			return "return respuestaJson;\n";
+		}
+		else if(returnValue.equals("Double")){
+			return "return Double.valueOf(respuestaJson);\n";
+		}
+		else if(returnValue.equals("boolean")){
+			return "//interpretar la respuesta Json\n"
+				+  "return true;";
+		}
+		else{
+			return returnType + " ob = new " + returnType + "();\n"
+					+ "try {\n"
+					+ "ob = new ObjectMapper().readValue(respuestaJson,\n"
+					+ returnType + ".class);\n"
+					+ "} catch (Exception e) {\n"
+					+ "System.out.println(\"Se encuentra un error en la respuesta del servidor, no es un Json Valido.  Respuesta:   \" + \n"
+					+ "respuestaJson);\n}"
+					+ "return ob;\n";
+			}
+
+
+		
+
+		
+
 	}
     /**
      * 
@@ -136,13 +178,12 @@ public class Generador {
 		case "POST":
 			return "post";
 		case "PUT":
-			break;
+			return "put";
 		case "DELETE":
-			break;
+			return "delete";
 		default:
 			return "-1";
 		}
-		return methodType;
 	}
 	
 

@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public class Interpreter {
 
 	public static void main(String [] args) throws Exception{
-		System.setIn(new FileInputStream(new File("input.txt")));
+		System.setIn(new FileInputStream(new File("input3.txt")));
 		ANTLRInputStream input = new ANTLRInputStream(System.in);
 		MyLanguageLexer lexer = new MyLanguageLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);

@@ -35,7 +35,7 @@ public class MyVisitor<T> extends MyLanguageBaseVisitor<T> {
 		String id = ctx.ID().getText();
 		String dir_url = (String) visitDir_url(ctx.dir_url());
 		String methodType = ctx.metodo().getText();
-		String returnType = ctx.returntype().getText();
+		String returnType = ctx.returntype().valor_retorno().getText();
 		List<ParametrosContext> parametros = ctx.parametros();
 		List<String> tipoParametros = new ArrayList<>();
 		List<String> nombreParametros = new ArrayList<>();
@@ -75,7 +75,7 @@ public class MyVisitor<T> extends MyLanguageBaseVisitor<T> {
 			return "Double";
 		}
 		if (value.object() != null) {
-			return value.object().getText();
+			return auxClazzName;
 		}
 		if (value.array() != null) {
 			return "List<" + auxClazzName + ">";
@@ -114,7 +114,6 @@ public class MyVisitor<T> extends MyLanguageBaseVisitor<T> {
 			nombreAtributo = pairContext.ID().getText();
 			auxClazzName = nombreAtributo;
 			tipoAtributo = getValueFromJson(pairContext.value1().value());
-			System.out.println(tipoAtributo);
 			if (isObjectFromJson(pairContext.value1().value())) {
 				clazzName = nombreAtributo;
 			}
@@ -149,7 +148,7 @@ public class MyVisitor<T> extends MyLanguageBaseVisitor<T> {
 				nombreAtribute++;
 			}
 			//nombreAtributo = pairContext.ID().getText();
-			System.out.println(tipoAtributo);
+			
 			atributos += GeneradorClases.generarAtributo(tipoAtributo, nombreAtributo);
 			//return (T) atributos;
 		}
