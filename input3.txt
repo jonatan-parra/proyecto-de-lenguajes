@@ -1,0 +1,39 @@
+URLREST: "https://bancoLenguajes/servicios/rest"
+PRUEBA GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/cuentas/micuenta"
+	NUMBER var5
+	STRING HoLa
+}
+REFER PUT:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "PATH"
+	DIR_URL: "/cuentas/micuenta"
+	NUMBER var5
+	STRING HoLa
+}
+
+
+{
+	"direccion": {
+		"calle": 25,
+		"referencia_casa": "1252",
+		"carrera": 10
+	},
+	"estudiante": {
+		"identificacion": "1121011",
+		"nombre": "MonicaDiaz",
+		"direccion": {
+			"calle": 10,
+			"referencia_casa": "1015",
+			"carrera": 7
+		},
+		"examen": {
+			"nota": 4,
+			"materia": "Literatura"
+		}
+	},
+	"tipo": "Publico",
+	"puntaje": 100
+}

@@ -7,10 +7,10 @@ PRUEBA POST:{
 	STRING HoLa
 }
 REFER POST:{
-	RETURNTYPE: STRING
+	RETURNTYPE: PeticionEvaluado
 	REQUESTTYPE: "MATRIX"
 	DIR_URL: "/dia/notas/mis"
-	NUMBER var5
+	PeticionEvaluado var5
 	STRING HoLa
 }
 HAHA POST:{
@@ -23,7 +23,7 @@ HAHA POST:{
 
 {
   codigoSNIES: 0,
-  peticionEvaluado: [
+  PeticionEvaluado: [
     {
       tipoDocumento: C,
       numeroDocumento: "71375099",

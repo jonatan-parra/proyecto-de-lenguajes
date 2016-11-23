@@ -1,0 +1,26 @@
+URLREST: "https://bancoLenguajes/servicios/rest"
+PRUEBA GET:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "QUERY"
+	DIR_URL: "/cuentas/micuenta"
+	NUMBER var5
+	STRING HoLa
+}
+REFER PUT:{
+	RETURNTYPE: STRING
+	REQUESTTYPE: "PATH"
+	DIR_URL: "/cuentas/micuenta"
+	NUMBER var5
+	STRING HoLa
+}
+
+{
+  codigoUsuario: 12123,
+  "confirmacionDatos": [
+    {
+     tipoDocumento: C,
+     "numeroDocumento": 1245488,
+     "tipoCuenta": "Corriente"
+    }
+  ]
+}
