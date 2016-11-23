@@ -202,8 +202,17 @@ public class Generador {
 		String URL = "http://johan-pc:8080/lenguajes-ejemplosrest/rest";
 		String clazz = myClass(definition, URL);
 		
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/ClienteRest.java"), "utf-8"))) {
-				writer.write(clazz);
+		generator(clazz);
+	}
+	
+	public static void generator(String content){
+		try (Writer writer = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("src/ClienteRest.java"), "utf-8"))) {
+			writer.write(content);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ASDASD");
+			// TODO: handle exception
 		}
 	}
 

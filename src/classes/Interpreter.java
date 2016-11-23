@@ -2,8 +2,9 @@ package classes;
 import java.io.File;
 import java.io.FileInputStream;
 
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Interpreter {
 
@@ -18,5 +19,8 @@ public class Interpreter {
 
 		MyVisitor<Object> loader = new MyVisitor<Object>();
 		loader.visit(tree);
+		
+		String clazz = Generador.myClass(MyVisitor.METODOSREST, MyVisitor.URLREST);
+		Generador.generator(clazz);
 	}
 }

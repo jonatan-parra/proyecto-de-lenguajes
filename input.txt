@@ -1,4 +1,4 @@
-URLREST: "https://funciono.com/muyAspero/rest"
+URLREST: "http://facebook.com"
 PRUEBA POST:{
 	RETURNTYPE: STRING
 	REQUESTTYPE: "MATRIX"
@@ -20,14 +20,14 @@ HAHA POST:{
 	STRING var5
 	STRING HoLa
 }
-{ }
+
 {
   codigoSNIES: 0,
-  "peticionEvaluado": [
+  peticionEvaluado: [
     {
-     tipoDocumento: C,
-     "numeroDocumento": 71375099,
-     "nuiEvaluado": "AC200010000034"
+      tipoDocumento: C,
+      numeroDocumento: "71375099",
+      "nuiEvaluado": "AC200010000034"
     },
     {
       "tipoDocumento": "C",
@@ -46,7 +46,7 @@ HAHA POST:{
     },
     {
       "tipoDocumento": "T",
-      "numeroDocumento": 90052556960,
+      "numeroDocumento": "90052556960",
       "nuiEvaluado": "AC200710640458"
     },
     {
