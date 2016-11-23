@@ -25,7 +25,8 @@ public class MyVisitor<T> extends MyLanguageBaseVisitor<T> {
 
 	@Override
 	public T visitCommands(MyLanguageParser.CommandsContext ctx) {
-		URLREST = ctx.urlrest().url().getText();
+		//URLREST = ctx.urlrest().url().getText();
+		URLREST = "http://johan-pc:8080/lenguajes-ejemplosrest/rest";
 		return visitChildren(ctx);
 	}
 
